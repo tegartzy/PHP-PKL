@@ -1,0 +1,17 @@
+#menyembunyikan file dari direktori
+Options -Indexes
+
+ServerSignature Off
+
+Order Allow,Deny
+    Allow from 127.0.0.1  
+Allow from all
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
+    </IfModule>
+
+#redirect /crud-php/mahasiswa.php https://mubatekno.com
